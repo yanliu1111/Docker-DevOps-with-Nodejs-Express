@@ -6,3 +6,8 @@ services:
       - "3000:3000" #means prod and dev share same port
     environment:
       - PORT=3000
+  mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mypassword
