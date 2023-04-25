@@ -1,9 +1,11 @@
 import express from "express";
+import mongoose from "mongoose";
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("<h2>Hello World!</h2>");
-});
+mongoose
+  .connect("mongodb://mongoadmin:mypassword@172.27.0.2:27017/?authSource=admin")
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log(err));
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
