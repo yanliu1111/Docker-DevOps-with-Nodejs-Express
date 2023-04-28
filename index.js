@@ -7,12 +7,10 @@ import {
   MONGO_PORT,
 } from "./config/config.js";
 const app = express();
-
+const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
 mongoose
-  .connect(
-    `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
-  )
-  .then(() => console.log("MongoDB connected"))
+  .connect(mongoURL)
+  .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.log(err));
 
 const port = process.env.PORT || 3000;
