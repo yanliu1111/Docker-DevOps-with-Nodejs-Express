@@ -15,7 +15,6 @@ services:
     command: npm run dev
 
   mongo:
-    image: mongo
     environment:
       - MONGO_INITDB_ROOT_USERNAME=mongoadmin
       - MONGO_INITDB_ROOT_PASSWORD=mypassword

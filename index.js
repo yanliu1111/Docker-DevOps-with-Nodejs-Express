@@ -1,5 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
+import {
+  MONGO_USER,
+  MONGO_PASSWORD,
+  MONGO_IP,
+  MONGO_PORT,
+} from "./config/config.js";
 const app = express();
 
 mongoose
