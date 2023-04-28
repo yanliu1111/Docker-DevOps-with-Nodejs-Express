@@ -3,7 +3,9 @@ import mongoose from "mongoose";
 const app = express();
 
 mongoose
-  .connect("mongodb://mongoadmin:mypassword@172.27.0.2:27017/?authSource=admin")
+  .connect(
+    `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`
+  )
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
