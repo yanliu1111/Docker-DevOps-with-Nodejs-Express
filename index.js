@@ -8,10 +8,18 @@ import {
 } from "./config/config.js";
 const app = express();
 const mongoURL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_IP}:${MONGO_PORT}/?authSource=admin`;
-mongoose
-  .connect(mongoURL)
-  .then(() => console.log("MongoDB connected successfully"))
-  .catch((err) => console.log(err));
+
+const connectWithRetry = () => {
+  mongoose
+    .connect(mongoURL)
+    .then(() => console.log("MongoDB connected successfully"))
+    .catch((err) => {
+      console.log(err);
+      setTimeout(connectWithRetry, 5000);
+    });
+};
+
+connectWithRetry();
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
