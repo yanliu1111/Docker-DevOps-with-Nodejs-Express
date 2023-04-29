@@ -5,12 +5,12 @@ const router = express.Router();
 router
   .route("/")
   .get(postController.getAllPosts)
-  .post(postController.createPosts);
+  .post(postController.createPost);
 
 router
-  .route(":/id")
-  .get(postController.getOnePosts)
-  .patch(postController.updatePosts)
-  .delete(postController.deletePosts);
+  .route("/:id")
+  .get(postController.getOnePost)
+  .patch(postController.updatePost)
+  .delete(postController.deletePost);
 
 export default router;

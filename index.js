@@ -23,7 +23,8 @@ const connectWithRetry = () => {
 };
 
 connectWithRetry();
-
+//middleware, it will run before any request, ensure that body gets attached to the request object
+app.use(express.json());
 app.get("/", (req, res) => {
   res.send("<h2>Hi There</h2>");
 });

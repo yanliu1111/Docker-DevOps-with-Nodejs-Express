@@ -17,7 +17,7 @@ const getAllPosts = async (req, res, next) => {
   }
 };
 
-const getOnePosts = async (req, res, next) => {
+const getOnePost = async (req, res, next) => {
   try {
     const post = await Post.findById(req.params.id);
     res.status(200).json({
@@ -33,7 +33,7 @@ const getOnePosts = async (req, res, next) => {
   }
 };
 
-const createPosts = async (req, res, next) => {
+const createPost = async (req, res, next) => {
   try {
     const post = await Post.create(req.body);
     res.status(200).json({
@@ -49,7 +49,7 @@ const createPosts = async (req, res, next) => {
   }
 };
 
-const updatePosts = async (req, res, next) => {
+const updatePost = async (req, res, next) => {
   try {
     const post = await Post.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
@@ -63,13 +63,14 @@ const updatePosts = async (req, res, next) => {
       },
     });
   } catch (err) {
+    console.log(err);
     res.status(400).json({
       status: "fail",
     });
   }
 };
 
-const deletePosts = async (req, res, next) => {
+const deletePost = async (req, res, next) => {
   try {
     const post = await Post.findByIdAndDelete(req.params.id);
     res.status(200).json({
@@ -84,8 +85,8 @@ const deletePosts = async (req, res, next) => {
 
 export default {
   getAllPosts,
-  getOnePosts,
-  createPosts,
-  updatePosts,
-  deletePosts,
+  getOnePost,
+  createPost,
+  updatePost,
+  deletePost,
 };
