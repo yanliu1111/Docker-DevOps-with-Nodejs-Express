@@ -1,11 +1,23 @@
 import express from "express";
-import mongoose from "mongoose";
+import mongoose, { connect } from "mongoose";
+import session from "express-session";
+import redis from "redis";
+import RedisStore from "connect-redis";
+
 import {
   MONGO_USER,
   MONGO_PASSWORD,
   MONGO_IP,
   MONGO_PORT,
+  REDIS_URL,
+  REDIS_PORT,
+  SESSION_SECRET,
 } from "./config/config.js";
+
+let redisClient = redis.createClient({
+  host: REDIS_URL,
+  port: REDIS_PORT,
+});
 
 import postRouter from "./routes/postRoutes.js";
 import userRouter from "./routes/userRoutes.js";
@@ -25,6 +37,19 @@ const connectWithRetry = () => {
 
 connectWithRetry();
 //middleware, it will run before any request, ensure that body gets attached to the request object
+app.use(
+  session({
+    store: new RedisStore({ client: redisClient }),
+    secret: SESSION_SECRET,
+    cookie: {
+      secure: false,
+      resave: false,
+      saveUninitialized: false,
+      httpOnly: true,
+      maxAge: 30000,
+    },
+  })
+);
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("<h2>Hi There</h2>");
