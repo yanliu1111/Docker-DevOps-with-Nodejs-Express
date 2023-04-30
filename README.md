@@ -29,5 +29,12 @@ admin> db.auth("username", "password")
 
 The difference is `mongo` is a shell, and `mongosh` is a shell for MongoDB with more features and better syntax.🤦‍♀️ <br>
 
-📗 Update-note: In index.js, starting with Mongoose version 6, you should not specify that as an option. It will be handled automatically. `useNewUrlParser`, `useUnifiedTopology`, `useFindAndModify`, and `useCreateIndex` are no longer supported options. Mongoose 6 always behaves as if `useNewUrlParser`, `useUnifiedTopology`, and `useCreateIndex` are true, and `useFindAndModify` is false.
-<br> 3. Install Redis and Redis Cluster <br> 4. Nginx for Load balancing to multiple node containers<br> 5. Dev to Prod <br> 6. Automating
+📗 Update-note: In index.js, starting with Mongoose version 6, you should not specify that as an option. It will be handled automatically. `useNewUrlParser`, `useUnifiedTopology`, `useFindAndModify`, and `useCreateIndex` are no longer supported options. Mongoose 6 always behaves as if `useNewUrlParser`, `useUnifiedTopology`, and `useCreateIndex` are true, and `useFindAndModify` is false. <br>
+
+✅3. Install Redis and Redis Cluster<br>
+
+- Sigup and Signin in RedisLabs<br>
+
+4. Nginx for Load balancing to multiple node containers<br>
+5. Dev to Prod <br>
+6. Automating
