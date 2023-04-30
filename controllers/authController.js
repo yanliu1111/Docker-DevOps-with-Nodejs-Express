@@ -2,8 +2,8 @@ import User from "../models/userModel.js";
 import bcrypt from "bcryptjs";
 const signUp = async (req, res, next) => {
   const { username, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 12);
   try {
+    const hashedPassword = await bcrypt.hash(password, 12);
     const newUser = await User.create({
       username,
       password: hashedPassword,
@@ -22,4 +22,34 @@ const signUp = async (req, res, next) => {
   }
 };
 
-export default signUp;
+const login = async (req, res, next) => {
+  const { username, password } = req.body;
+  try {
+    const user = await User.findOne({ username });
+    if (!user) {
+      res.status(404).json({
+        status: "fail",
+        message: "User not found",
+      });
+    }
+    const isCorrect = await bcrypt.compare(password, user.password);
+
+    if (isCorrect) {
+      res.status(200).json({
+        status: "success",
+        message: "User logged in successfully",
+      });
+    } else {
+      res.status(400).json({
+        status: "fail",
+        message: "Incorrect username or password",
+      });
+    }
+  } catch (e) {
+    res.status(400).json({
+      status: "fail",
+    });
+  }
+};
+
+export default { signUp, login };
