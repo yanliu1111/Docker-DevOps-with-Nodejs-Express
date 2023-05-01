@@ -36,7 +36,8 @@ The difference is `mongo` is a shell, and `mongosh` is a shell for MongoDB with 
 - Sigup and Signin in RedisLabs<br>
 - Troubleshooting in Redis Version 4.0.9<br>
   the error I got
-  ````bash
+
+```bash
   Mon, 01 May 2023 04:41:24 GMT express-session deprecated undefined resave option; provide resave option at file:/app/index.js:48:3
   Mon, 01 May 2023 04:41:24 GMT express-session deprecated undefined saveUninitialized option; provide saveUninitialized option at file:/app/index.js:48:3
   Server listening on port 3000
@@ -53,9 +54,9 @@ The difference is `mongo` is a shell, and `mongosh` is a shell for MongoDB with 
     at ServerResponse.end (/app/node_modules/express-session/index.js:335:21)
     at ServerResponse.send (/app/node_modules/express/lib/response.js:232:10)
     at ServerResponse.json (/app/node_modules/express/lib/response.js:278:15)
-    ```
-  **Solution 1st** with Redis Version 4.0.9<br>
-  ````
+```
+
+**Solution 1st** with Redis Version 4.0.9<br>
 
 ```bash
 const { createClient } = require('redis');
@@ -73,7 +74,7 @@ client.on('error', (err) => console.log('<:: Redis Client Error', err));
 
 Cannot solve the problem, I got infinite loop for server listening on port 3000<br>
 
-**Solution 2nd** with Redis Version 3.0.2, problem solved 😶<br>
+**Solution 2nd** with Redis Version 3.0.2, problem solved 😶 <br>
 Here is the reference I used [link](https://stackoverflow.com/questions/70145795/node-redis-does-not-work-on-my-windows-computer-even-though-the-server-is-up-and)<br>
 
 4. Nginx for Load balancing to multiple node containers<br>
