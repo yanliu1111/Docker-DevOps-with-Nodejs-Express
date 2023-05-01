@@ -43,19 +43,21 @@ redisClient.on("error", (err) =>
 
 connectWithRetry();
 //middleware, it will run before any request, ensure that body gets attached to the request object
-app.use(
-  session({
-    store: new RedisStore({ client: redisClient }),
-    secret: SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: {
-      secure: false,
-      httpOnly: true,
-      maxAge: 30000,
-    },
-  })
-);
+let myRedisStore = new RedisStore({ client: redisClient });
+console.log("myRedisStore", myRedisStore);
+let mySession = session({
+  store: myRedisStore,
+  secret: SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false,
+    httpOnly: true,
+    maxAge: 30000,
+  },
+});
+console.log("mySession", mySession);
+app.use(mySession);
 
 app.use(express.json());
 app.get("/api/v1", (req, res) => {
