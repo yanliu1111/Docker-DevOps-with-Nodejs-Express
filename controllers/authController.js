@@ -8,6 +8,7 @@ const signUp = async (req, res, next) => {
       username,
       password: hashedPassword,
     });
+    req.session.user = newUser;
     res.status(201).json({
       status: "success",
       data: {
@@ -22,12 +23,11 @@ const signUp = async (req, res, next) => {
   }
 };
 
-const login = async (req, res, next) => {
+const login = async (req, res) => {
   const { username, password } = req.body;
   try {
     const user = await User.findOne({ username });
     if (!user) {
-      console.log("user not found!!!!!!!");
       return res.status(404).json({
         status: "fail",
         message: "User not found",
@@ -41,7 +41,6 @@ const login = async (req, res, next) => {
         message: "User logged in successfully",
       });
     } else {
-      console.log("incorrect!!!!!!!");
       res.status(400).json({
         status: "fail",
         message: "Incorrect username or password",
