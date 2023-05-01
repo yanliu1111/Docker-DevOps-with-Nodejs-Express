@@ -1,18 +1,17 @@
-import express from "express";
-import mongoose, { connect } from "mongoose";
-import session from "express-session";
-import redis from "redis";
 import RedisStore from "connect-redis";
+import express from "express";
+import session from "express-session";
+import mongoose from "mongoose";
 
 import { createClient } from "redis";
 
 import {
-  MONGO_USER,
-  MONGO_PASSWORD,
   MONGO_IP,
+  MONGO_PASSWORD,
   MONGO_PORT,
-  REDIS_URL,
+  MONGO_USER,
   REDIS_PORT,
+  REDIS_URL,
   SESSION_SECRET,
 } from "./config/config.js";
 
@@ -59,7 +58,7 @@ app.use(
 );
 
 app.use(express.json());
-app.get("/", (req, res) => {
+app.get("/api/v1", (req, res) => {
   res.send("<h2>Hi There</h2>");
 });
 //api/v1 means api, this request is for your api in case you hosting your frontend and backend within same domain, then specify the version of your api, so you can start the second version you can run side by side
