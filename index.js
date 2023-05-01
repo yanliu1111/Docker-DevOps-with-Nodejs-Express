@@ -4,6 +4,8 @@ import session from "express-session";
 import redis from "redis";
 import RedisStore from "connect-redis";
 
+import { createClient } from "redis";
+
 import {
   MONGO_USER,
   MONGO_PASSWORD,
@@ -14,7 +16,7 @@ import {
   SESSION_SECRET,
 } from "./config/config.js";
 
-let redisClient = redis.createClient({
+let redisClient = createClient({
   host: REDIS_URL,
   port: REDIS_PORT,
 });
@@ -35,6 +37,11 @@ const connectWithRetry = () => {
     });
 };
 
+redisClient.on("connect", () => console.log("Redis Client Connected"));
+redisClient.on("error", (err) =>
+  console.log("Redis Client Connection Error", err)
+);
+
 connectWithRetry();
 //middleware, it will run before any request, ensure that body gets attached to the request object
 app.use(
@@ -46,10 +53,11 @@ app.use(
       resave: false,
       saveUninitialized: false,
       httpOnly: true,
-      maxAge: 30000,
+      maxAge: 3000000,
     },
   })
 );
+
 app.use(express.json());
 app.get("/", (req, res) => {
   res.send("<h2>Hi There</h2>");
