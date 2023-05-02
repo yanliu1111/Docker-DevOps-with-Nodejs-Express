@@ -91,6 +91,28 @@ Conclusions: This repo is done, all learning and works flow above, the reason I 
 
 To get started, clone the repository and install the dependencies. Code works good.
 
+start the docker containers:
+
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
+
+or
+
+
+```
+
+check the logs:
+
+```bash
+docker logs node-docker-node-app-1 -f
+```
+
+stop the docker containers:
+
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
+```
+
 Not finished parts:
 <br> 5. Dev to Prod <-Jump here, because have to installing docker on Ubuntu(Digital Ocean), and deploy to Digital Ocean
 <br> 6. Automating <- Setting in Digital Ocean, and Github Actions
@@ -98,3 +120,7 @@ Not finished parts:
 ## What next?
 
 Docker learning never end...🐳
+
+```
+
+```
