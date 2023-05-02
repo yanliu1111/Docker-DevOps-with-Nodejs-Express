@@ -15,6 +15,8 @@
 
 ## Work Processings:
 
+(✅ done)
+
 ✅ 1. In Docker HUB, install Nodejs Docker image
 
 ✅ 2. Install MongoDB Docker image<br>
