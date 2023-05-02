@@ -13,15 +13,13 @@
 
 > **Learn the core fundamentals of Docker by building a Node/Express app with a Mongo & Redis database.**
 
-## Work Processings:
+## Work Done:
 
-(✅ done)
+1. ✅ In Docker HUB, install Nodejs Docker image
 
-✅ 1. In Docker HUB, install Nodejs Docker image
+2. ✅ Install MongoDB Docker image<br>
 
-✅ 2. Install MongoDB Docker image<br>
-
-📕 Just curiosity the reason 👉 when I follow the docker doc to use mongodb image, and want to see my database, I used `mongo -u "mongoadmin" -p "mypassword"` , which didn't work in my bash, THEN I used `mongosh` and it worked. So I want to know the difference between `mongo` and `mongosh`.<br>
+Just curiosity the reason 👉 when I follow the docker doc to use mongodb image, and want to see my database, I used `mongo -u "mongoadmin" -p "mypassword"` , which didn't work in my bash, THEN I used `mongosh` and it worked. So I want to know the difference between `mongo` and `mongosh`.<br>
 
 ```bash
 mydb> use admin
@@ -33,7 +31,7 @@ The difference is `mongo` is a shell, and `mongosh` is a shell for MongoDB with 
 
 📗 Update-note: In index.js, starting with Mongoose version 6, you should not specify that as an option. It will be handled automatically. `useNewUrlParser`, `useUnifiedTopology`, `useFindAndModify`, and `useCreateIndex` are no longer supported options. Mongoose 6 always behaves as if `useNewUrlParser`, `useUnifiedTopology`, and `useCreateIndex` are true, and `useFindAndModify` is false. <br>
 
-✅3. Install Redis<br>
+3. ✅ Install Redis<br>
 
 - Sigup and Signin in RedisLabs<br>
 - Troubleshooting in Redis Version 4.0.9<br>
@@ -79,35 +77,35 @@ Cannot solve the problem, I got infinite loop for server listening on port 3000<
 **Solution 2nd** with Redis Version 3.0.2, problem solved 😶 <br>
 Here is the reference I used [link](https://stackoverflow.com/questions/70145795/node-redis-does-not-work-on-my-windows-computer-even-though-the-server-is-up-and)<br>
 
-✅4. Nginx for Load balancing to multiple node containers<br>
+4. ✅ Nginx for Load balancing to multiple node containers<br>
 
-- 2 node instances (port3000) connected to Nginx ✅<br>
-- Express CORS configuration ✅<br>
+- ✅ 2 node instances (port3000) connected to Nginx <br>
+- ✅ Express CORS configuration <br>
 
-Conclusions: This repo is done, all learning and works flow above, the reason I choose this freeCodeCamp [Tutorial](https://www.youtube.com/watch?v=9zUHg7xjIqQ&ab_channel=freeCodeCamp.org) because it taught docker compose with many packages (node, express, mongodb, redis, nginx) and how to run 2 node instances <br>
-🤔 Probably I don't strong recommend this tutorial, because the Redis version is version3, I got many errors in the work process, I focused on troubleshooting on most learning time, still have one error leave there, I markered in comment.
+**Conclusions**: This repo is done, all learning and works flow above, the reason I choose this freeCodeCamp [Tutorial](https://www.youtube.com/watch?v=9zUHg7xjIqQ&ab_channel=freeCodeCamp.org) because it taught docker compose with many packages (node, express, mongodb, redis, nginx) and how to run 2 node instances <br>
+🤔 **Probably** I don't strongly recommend this tutorial, because the Redis version is version3, I got many errors in the work process, I focused on troubleshooting on most learning time, still have one error leave there, I markered in comment.
 
 **If you are interested in this tutorial**
 
 To get started, clone the repository and install the dependencies. Code works good.
 
-start the docker containers:
+Start the docker containers:
 
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build
 
-or
+or keep the volume
 
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --build -V
 ```
 
-check the logs:
+Check the logs:
 
 ```bash
 docker logs node-docker-node-app-1 -f
 ```
 
-stop the docker containers:
+Stop the docker containers:
 
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
@@ -115,7 +113,7 @@ docker-compose -f docker-compose.yml -f docker-compose.dev.yml down
 
 Not finished parts:
 <br> 5. Dev to Prod <-Jump here, because have to installing docker on Ubuntu(Digital Ocean), and deploy to Digital Ocean
-<br> 6. Automating <- Setting in Digital Ocean, and Github Actions
+<br> 6. Automating <- Setting in Digital Ocean
 
 ## What next?
 
