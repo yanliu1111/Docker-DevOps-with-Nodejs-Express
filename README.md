@@ -77,6 +77,10 @@ Cannot solve the problem, I got infinite loop for server listening on port 3000<
 **Solution 2nd** with Redis Version 3.0.2, problem solved 😶 <br>
 Here is the reference I used [link](https://stackoverflow.com/questions/70145795/node-redis-does-not-work-on-my-windows-computer-even-though-the-server-is-up-and)<br>
 
-4. Nginx for Load balancing to multiple node containers<br>
+✅4. Nginx for Load balancing to multiple node containers<br>
+
+- 2 node instances (port3000) connected to Nginx ✅<br>
+- Express CORS configuration ✅<br>
+
 5. Dev to Prod <br>
 6. Automating

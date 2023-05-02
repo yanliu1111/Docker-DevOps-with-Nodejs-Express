@@ -2,7 +2,7 @@ import RedisStore from "connect-redis";
 import express from "express";
 import session from "express-session";
 import mongoose from "mongoose";
-
+import cors from "cors";
 import { createClient } from "redis";
 
 import {
@@ -43,8 +43,10 @@ redisClient.on("error", (err) =>
 
 connectWithRetry();
 //middleware, it will run before any request, ensure that body gets attached to the request object
+app.enable("trust proxy"); //neccessary for prod deployment
+app.use(cors({}));
 let myRedisStore = new RedisStore({ client: redisClient });
-console.log("myRedisStore", myRedisStore);
+// console.log("myRedisStore", myRedisStore);
 let mySession = session({
   store: myRedisStore,
   secret: SESSION_SECRET,
@@ -56,12 +58,13 @@ let mySession = session({
     maxAge: 30000,
   },
 });
-console.log("mySession", mySession);
+// console.log("mySession", mySession);
 app.use(mySession);
 
 app.use(express.json());
 app.get("/api/v1", (req, res) => {
   res.send("<h2>Hi There</h2>");
+  console.log("HEY THERE!!!");
 });
 //api/v1 means api, this request is for your api in case you hosting your frontend and backend within same domain, then specify the version of your api, so you can start the second version you can run side by side
 //localhost:3000/api/v1/posts will go to our postRouter
