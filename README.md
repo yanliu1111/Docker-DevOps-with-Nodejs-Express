@@ -82,5 +82,17 @@ Here is the reference I used [link](https://stackoverflow.com/questions/70145795
 - 2 node instances (port3000) connected to Nginx ✅<br>
 - Express CORS configuration ✅<br>
 
-5. Dev to Prod <br>
-6. Automating
+Conclusions: This repo is done, all learning and works flow above, the reason I choose this freeCodeCamp [Tutorial](https://www.youtube.com/watch?v=9zUHg7xjIqQ&ab_channel=freeCodeCamp.org) because it taught docker compose with many packages (node, express, mongodb, redis, nginx) and how to run 2 node instances <br>
+🤔 Probably I don't strong recommend this tutorial, because the Redis version is version3, I got many errors in the work process, I focused on troubleshooting on most learning time, still have one error leave there, I markered in comment.
+
+**If you are interested in this tutorial**
+
+To get started, clone the repository and install the dependencies. Code works good.
+
+Not finished parts:
+<br> 5. Dev to Prod <-Jump here, because have to installing docker on Ubuntu(Digital Ocean), and deploy to Digital Ocean
+<br> 6. Automating <- Setting in Digital Ocean, and Github Actions
+
+## What next?
+
+Docker learning never end...🐳
