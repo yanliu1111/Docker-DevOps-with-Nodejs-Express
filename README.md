@@ -120,7 +120,3 @@ Not finished parts:
 ## What next?
 
 Docker learning never end...🐳
-
-```
-
-```
