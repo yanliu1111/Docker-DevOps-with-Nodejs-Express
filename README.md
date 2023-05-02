@@ -33,7 +33,7 @@ The difference is `mongo` is a shell, and `mongosh` is a shell for MongoDB with 
 
 📗 Update-note: In index.js, starting with Mongoose version 6, you should not specify that as an option. It will be handled automatically. `useNewUrlParser`, `useUnifiedTopology`, `useFindAndModify`, and `useCreateIndex` are no longer supported options. Mongoose 6 always behaves as if `useNewUrlParser`, `useUnifiedTopology`, and `useCreateIndex` are true, and `useFindAndModify` is false. <br>
 
-✅3. Install Redis and Redis Cluster<br>
+✅3. Install Redis<br>
 
 - Sigup and Signin in RedisLabs<br>
 - Troubleshooting in Redis Version 4.0.9<br>
