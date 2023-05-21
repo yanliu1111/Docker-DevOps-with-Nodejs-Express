@@ -11,7 +11,18 @@
 
 ## Introduction
 
-> **Learn the core fundamentals of Docker by building a Node/Express app with a Mongo & Redis database.**
+> **Learn the core fundamentals of Docker by building a Node/Express app with a Mongo & Redis database.** <br>
+
+Tech Stack:
+
+- Docker image
+- Dockerfile
+- Docker Compose
+- Nodejs
+- Express
+- MongoDB
+- Redis
+- Nginx
 
 ## Work Done:
 
